@@ -1,0 +1,11 @@
+node_modules
+app/test/results.txt
+coverage
+*.log
+npm-debug.log
+dist
+.idea/misc.xml
+.idea/workspace.xml
+.idea/vcs.xml
+target
+.DS_Store

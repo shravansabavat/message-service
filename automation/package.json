@@ -1,0 +1,12 @@
+{
+  "name": "cloud_storage_validation_service_automation",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "chai": "^3.2.0",
+    "jsonwebtoken": "^5.0.0",
+    "lodash": "3.10.1",
+    "mocha": "2.1.0",
+    "restler": "3.3.0"
+  }
+}
