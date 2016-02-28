@@ -5,6 +5,13 @@ function getPallyndromes() {
     return pallyndromeHelper.getPallyndromes();
 }
 
+function getPallyndrome(input) {
+    var list = pallyndromeHelper.getPallyndromes();
+    return _.find(list, function(pallyndrome) {
+        return pallyndrome.input === input;
+    })
+}
+
 function isValidPallyndrome(actualString) {
     var reverseString =  actualString.split('').reverse().join('');
     return reverseString === actualString;
@@ -22,5 +29,6 @@ function savePallyndrome(actualString) {
 
 module.exports = {
     getPallyndromes: getPallyndromes,
+    getPallyndrome: getPallyndrome,
     savePallyndrome: savePallyndrome
 }

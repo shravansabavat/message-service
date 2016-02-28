@@ -13,6 +13,12 @@ router.get('/list', function (req, res) {
     res.status(200).send(pallyndromes).end();
 });
 
+router.get('/:input', function (req, res) {
+    var input = req.params.input;
+    var pallindrome = pallyndromeService.getPallyndrome(input);
+    res.status(200).send(pallindrome).end();
+});
+
 router.post('/', function (req, res) {
     try {
         var str = validParam.checkPallyndomeString(req);

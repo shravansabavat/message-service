@@ -8,21 +8,37 @@ function getPallyndromes() {
 }
 
 function checkIfStringAlreadyExists(fileData, actualString) {
-    return _.indexOf(fileData, actualString) >= 0;
+    return _.find(fileData, function(data){
+        return data.input == actualString;
+    });
 }
 
 function savePallyndrome(actualString) {
     var fileData = require('../database/pallyndromes');
-    var exists = checkIfStringAlreadyExists(fileData, actualString);
+    var data = checkIfStringAlreadyExists(fileData, actualString);
 
-    if (exists === false) {
-        fileData.push(actualString);
+    if (typeof data !== 'undefined') {
+        fileData = _.without(fileData, _.findWhere(fileData, data));
 
-        fs.writeFile(filepath, JSON.stringify(fileData), function (err){
-            if (err) throw err;
-            console.log('It\'s saved!');
-        });
+        var pallyndromeCheckedCount = data.pallyndromeCheckedCount;
+        pallyndromeCheckedCount += 1;
+
+        data.pallyndromeCheckedCount = pallyndromeCheckedCount;
+        data.date = new Date();
+    } else {
+        data = {
+            input : actualString,
+            date: new Date(),
+            pallyndromeCheckedCount: 1
+        }
     }
+
+    fileData.push(data);
+
+    fs.writeFile(filepath, JSON.stringify(fileData), function (err){
+        if (err) throw err;
+        console.log('It\'s saved!');
+    });
 }
 
 module.exports = {
