@@ -35,10 +35,7 @@ function savePallyndrome(actualString) {
 
     fileData.push(data);
 
-    fs.writeFile(filepath, JSON.stringify(fileData), function (err){
-        if (err) throw err;
-        console.log('It\'s saved!');
-    });
+    fs.writeFileSync(filepath, JSON.stringify(fileData));
 }
 
 module.exports = {
