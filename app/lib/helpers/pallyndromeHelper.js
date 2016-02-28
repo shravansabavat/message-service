@@ -1,6 +1,7 @@
 var fs = require('fs');
 var _ = require('lodash');
-var filepath = './app/lib/database/pallyndromes.json';
+var filepath = '../database/pallyndromes.json';
+var path = require('path');
 
 function getPallyndromes() {
     var fileData = require('../database/pallyndromes');
@@ -35,7 +36,13 @@ function savePallyndrome(actualString) {
 
     fileData.push(data);
 
-    fs.writeFileSync(filepath, JSON.stringify(fileData));
+    fs.writeFile(path.join(__dirname, filepath), JSON.stringify(fileData), function (err){
+        if (err)  {
+            throw err;
+        } else {
+            console.log('It\'s saved!');
+        }
+    });
 }
 
 module.exports = {
