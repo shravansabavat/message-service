@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "1.11.0",
+    "cors": "2.7.1",
     "express": "4.11.2",
     "jwt-simple": "^0.4.1",
     "jsonfile":"2.2.3",

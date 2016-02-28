@@ -9,7 +9,6 @@ var router = express.Router();
 router.use(bodyParser.json());
 
 router.get('/list', function (req, res) {
-    res.header("Access-Control-Allow-Origin", "*");
     var pallyndromes = pallyndromeService.getPallyndromes();
     res.status(200).send(pallyndromes).end();
 });

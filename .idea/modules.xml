@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pallyndrome.iml" filepath="$PROJECT_DIR$/.idea/pallyndrome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pallyndrome-service/.idea/pallyndrome-service.iml" filepath="$PROJECT_DIR$/../pallyndrome-service/.idea/pallyndrome-service.iml" />
     </modules>
   </component>
 </project>
