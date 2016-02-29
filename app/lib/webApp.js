@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var pallyndromeRouter = require('./routers/pallyndromeRouter');
 var healthCheckRouter = require('./routers/healthcheckRouter');
-var cors = require('cors')
+var cors = require('cors');
+var methodOverride = require('method-override');
 
 var PALLYNDROME_ENDPOINT = '/pallyndrome';
 var HEALTHCHECK_ENDPOINT = '/healthcheck';
