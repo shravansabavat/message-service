@@ -5,7 +5,7 @@ var path = require('path');
 var decache = require('decache');
 
 function getPallyndromes() {
-    var fileData = JSON.parse(fs.readFileSync(path.join(__dirname, filepath), 'utf8'));
+    var fileData = require('../database/pallyndromes');
     return fileData;
 }
 
@@ -27,6 +27,7 @@ function deletePallyndrome(input, callback) {
                 console.log('Deleted message!!');
                 deleted = true;
             }
+            decache('../database/pallyndromes');
             callback(err, deleted);
         });
     }
