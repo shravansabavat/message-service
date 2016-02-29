@@ -19,6 +19,20 @@ router.get('/:input', function (req, res) {
     res.status(200).send(pallindrome).end();
 });
 
+router.delete('/:input', function (req, res) {
+    var input = req.params.input;
+    pallyndromeService.deletePallyndrome(input, function(err) {
+        if (err) {
+            console.log('Error deleting message', err);
+            res.status(500).end();
+        } else {
+            console.log('Delete successful with message ' + input);
+            res.status(200).send(true).end();
+        }
+    });
+
+});
+
 router.post('/', function (req, res) {
     try {
         var str = validParam.checkPallyndomeString(req);

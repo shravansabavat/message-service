@@ -12,14 +12,14 @@ chai.use(sinonChai);
 var assert = require('assert');
 var errors = require('../../lib/routers/validation/parameterValidationErrors');
 
-describe('itemsHelper', function () {
+describe('pallyndromeHelper', function () {
 
-    describe('getItemsFromDatamodel', function () {
-        var purchaseItems = [{
-            id: 1
+    describe('getPallyndromes', function () {
+        var pallyndromes = [{
+            input: 'aaaa'
         }];
-        var itemsHelper = proxyquire('../../lib/helpers/itemsHelper', {
-            '../database/items': purchaseItems
+        var pallyndromeHelper = proxyquire('../../lib/helpers/pallyndromeHelper', {
+            '../database/pallyndromes': pallyndromes
         });
 
         it('should return items from the database', function () {

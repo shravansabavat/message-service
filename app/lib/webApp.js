@@ -12,7 +12,7 @@ var PORT = 8081;
 var corsOptions = {
     "origin": "*",
     "methods": [
-        "GET","POST"
+        "GET","POST", "DELETE"
     ]
 };
 

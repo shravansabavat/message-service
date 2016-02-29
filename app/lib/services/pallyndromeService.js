@@ -9,7 +9,13 @@ function getPallyndrome(input) {
     var list = pallyndromeHelper.getPallyndromes();
     return _.find(list, function(pallyndrome) {
         return pallyndrome.input === input;
-    })
+    });
+}
+
+function deletePallyndrome(input, callback) {
+    pallyndromeHelper.deletePallyndrome(input, function (err, data) {
+        callback(err, data);
+    });
 }
 
 function isValidPallyndrome(actualString) {
@@ -30,5 +36,6 @@ function savePallyndrome(actualString) {
 module.exports = {
     getPallyndromes: getPallyndromes,
     getPallyndrome: getPallyndrome,
+    deletePallyndrome: deletePallyndrome,
     savePallyndrome: savePallyndrome
 }
