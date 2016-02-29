@@ -20,7 +20,7 @@ function deletePallyndrome(input, callback) {
 
 function isValidPallyndrome(actualString) {
     var reverseString =  actualString.split('').reverse().join('');
-    return reverseString === actualString;
+    return reverseString.toLowerCase() === actualString.toLowerCase();
 }
 
 function savePallyndrome(actualString) {
