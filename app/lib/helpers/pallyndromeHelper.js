@@ -36,8 +36,8 @@ function deletePallyndrome(input, callback) {
 function checkIfStringAlreadyExists(fileData, actualString) {
     return _.find(fileData, function(data){
         var input = data.input.replace(/[^A-Z0-9]/ig, "").toLowerCase();
-        var actualString = actualString.replace(/[^A-Z0-9]/ig, "").toLowerCase();
-        return input === actualString;
+        var actual = actualString.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+        return input === actual;
     });
 }
 
