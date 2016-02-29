@@ -5,7 +5,7 @@ var path = require('path');
 var decache = require('decache');
 
 function getPallyndromes() {
-    var fileData = JSON.parse(fs.readFileSync('file', 'utf8'));
+    var fileData = JSON.parse(fs.readFileSync(path.join(__dirname, filepath), 'utf8'));
     return fileData;
 }
 
