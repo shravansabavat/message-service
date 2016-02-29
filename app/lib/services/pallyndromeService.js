@@ -19,7 +19,8 @@ function deletePallyndrome(input, callback) {
 }
 
 function isValidPallyndrome(actualString) {
-    var reverseString =  actualString.split('').reverse().join('');
+    actualString = actualString.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+    var reverseString = actualString.split('').reverse().join('');
     return reverseString.toLowerCase() === actualString.toLowerCase();
 }
 
