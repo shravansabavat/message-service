@@ -5,7 +5,7 @@ var path = require('path');
 var decache = require('decache');
 
 function getPallyndromes() {
-    var fileData = require('../database/pallyndromes');
+    var fileData = JSON.parse(fs.readFileSync('file', 'utf8'));
     return fileData;
 }
 
@@ -16,6 +16,9 @@ function deletePallyndrome(input, callback) {
 
     if (typeof data !== 'undefined') {
         var fileData = _.without(fileData, _.findWhere(fileData, data));
+        if (typeof fileData === 'undefined') {
+            fileData = [];
+        }
 
         fs.writeFile(path.join(__dirname, filepath), JSON.stringify(fileData), function (err){
             if (err)  {
@@ -24,7 +27,6 @@ function deletePallyndrome(input, callback) {
                 console.log('Deleted message!!');
                 deleted = true;
             }
-            decache('../database/pallyndromes');
             callback(err, deleted);
         });
     }
