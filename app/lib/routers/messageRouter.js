@@ -1,7 +1,7 @@
 var express = require('express');
 var _ = require('lodash');
 var bodyParser = require('body-parser');
-var pallyndromeService = require('../services/pallyndromeService');
+var messageService = require('../services/messageService');
 var validParam = require('../routers/validation/parameterValidation');
 var errors = require('../routers/validation/parameterValidationErrors');
 
@@ -9,19 +9,19 @@ var router = express.Router();
 router.use(bodyParser.json());
 
 router.get('/list', function (req, res) {
-    var pallyndromes = pallyndromeService.getPallyndromes();
-    res.status(200).send(pallyndromes).end();
+    var messages = messageService.getMessages();
+    res.status(200).send(messages).end();
 });
 
 router.get('/:input', function (req, res) {
     var input = req.params.input;
-    var pallindrome = pallyndromeService.getPallyndrome(input);
-    res.status(200).send(pallindrome).end();
+    var message = messageService.getMessage(input);
+    res.status(200).send(message).end();
 });
 
 router.delete('/:input', function (req, res) {
     var input = req.params.input;
-    pallyndromeService.deletePallyndrome(input, function(err) {
+    messageService.deleteMessage(input, function(err) {
         if (err) {
             console.log('Error deleting message', err);
             res.status(500).end();
@@ -30,15 +30,15 @@ router.delete('/:input', function (req, res) {
             res.status(200).send(true).end();
         }
     });
-
 });
 
 router.post('/', function (req, res) {
     try {
-        var str = validParam.checkPallyndomeString(req);
-        var pallyndromeSaved = pallyndromeService.savePallyndrome(str);
+        var str = validParam.validateMessage(req);
+        messageService.saveMessage(str);
+
         var result = {
-            'pallyndrome': pallyndromeSaved
+            'messageSaved': true
         };
 
         res.status(200).send(result).end();

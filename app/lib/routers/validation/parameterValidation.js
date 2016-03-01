@@ -2,7 +2,7 @@ var errors = require('./parameterValidationErrors');
 
 module.exports = {
 
-    checkPallyndomeString: function (req) {
+    validateMessage: function (req) {
         var str = req.body;
         if (typeof str === 'undefined' ||
             typeof str.input === 'undefined' ||

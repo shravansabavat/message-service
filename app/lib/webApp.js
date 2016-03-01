@@ -1,11 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var pallyndromeRouter = require('./routers/pallyndromeRouter');
+var messageRouter = require('./routers/messageRouter');
 var healthCheckRouter = require('./routers/healthcheckRouter');
 var cors = require('cors');
 var methodOverride = require('method-override');
 
-var PALLYNDROME_ENDPOINT = '/pallyndrome';
+var MESSAGE_ENDPOINT = '/message';
 var HEALTHCHECK_ENDPOINT = '/healthcheck';
 
 var PORT = 8081;
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
-app.use(PALLYNDROME_ENDPOINT, pallyndromeRouter);
+app.use(MESSAGE_ENDPOINT, messageRouter);
 app.use(HEALTHCHECK_ENDPOINT, healthCheckRouter);
 
 
