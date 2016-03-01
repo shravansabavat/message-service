@@ -1,7 +1,5 @@
 var restClient = require('restler');
 var assert = require('assert');
-var errors = require('../../app/lib/routers/validation/parameterValidationErrors');
-
 var serviceUrl = 'http://localhost:8081';
 var messageEndpoint = serviceUrl + '/message';
 var postMessageEndpoint = messageEndpoint;
@@ -36,7 +34,7 @@ describe('Messages endpoints', function () {
             return restClient
                 .postJson(postMessageEndpoint, data)
                 .on('complete', function (data, response) {
-                    assert(response.statusCode === 401);
+                    assert(response.statusCode === 400);
                     done();
                 });
         });
@@ -90,7 +88,7 @@ describe('Messages endpoints', function () {
             return restClient
                 .del(deleteMessageEndpoint + '/' + inputMessage+'asdsadas')
                 .on('complete', function (data, response) {
-                    assert(response.statusCode === 401);
+                    assert(response.statusCode === 400);
                     done();
                 });
         });
