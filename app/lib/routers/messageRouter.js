@@ -22,7 +22,10 @@ router.get('/:input', function (req, res) {
 router.delete('/:input', function (req, res) {
     var input = req.params.input;
     messageService.deleteMessage(input, function(err) {
-        if (err) {
+        if (err && err === errors.INVALID_STRING) {
+            console.log(err);
+            res.status(401).end(err);
+        }else if (err) {
             console.log('Error deleting message', err);
             res.status(500).end();
         } else {

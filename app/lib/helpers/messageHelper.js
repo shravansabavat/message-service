@@ -3,6 +3,7 @@ var _ = require('lodash');
 var filepath = '../database/messages.json';
 var path = require('path');
 var decache = require('decache');
+var errors = require('../routers/validation/parameterValidationErrors');
 
 function getMessages() {
     return JSON.parse(fs.readFileSync(path.join(__dirname, filepath), 'utf8'));
@@ -19,14 +20,11 @@ function deleteMessage(messageData, callback) {
         }
 
         writeFileData(fileData, function (err) {
-            if (err)  {
-                throw err;
-            } else {
-                console.log('Deleted message!!');
-                deleted = true;
-            }
+            deleted = true;
             callback(err, deleted);
         });
+    } else {
+        callback(errors.INVALID_STRING);
     }
 }
 
