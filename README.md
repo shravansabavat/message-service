@@ -68,7 +68,7 @@
 ### 4. deleteMessage
 
 * URL
-  * http://{host}:8080/message/{message}
+  * http://{host}:8081/message/{message}
 * Method
   * DELETE
 * Headers
