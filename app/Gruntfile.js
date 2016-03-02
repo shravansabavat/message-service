@@ -24,7 +24,7 @@ module.exports = function (grunt) {
             coverage: {
                 src: 'test',
                 options: {
-                    mask: '**/*Test.js',
+                    mask: '**/*.js',
                     reportFormats: [
                         'cobertura',
                         'html'

@@ -2,7 +2,6 @@ var fs = require('fs');
 var _ = require('lodash');
 var filepath = '../database/messages.json';
 var path = require('path');
-var decache = require('decache');
 var errors = require('../routers/validation/parameterValidationErrors');
 
 function getMessages() {
@@ -15,7 +14,7 @@ function deleteMessage(messageData, callback) {
 
     if (typeof messageData !== 'undefined') {
         var fileData = _.without(fileData, _.findWhere(fileData, messageData));
-        if (typeof fileData === 'undefined') {
+        if (typeof fileData === 'undefined' || fileData.length === 0) {
             fileData = [];
         }
 
